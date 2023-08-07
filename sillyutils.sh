@@ -94,8 +94,8 @@ tbc() {
 }
 
 glog() {
-  CMD="tail -f /var/log/portage/*"${@}"*"
-  case $(id -u) in 0) "${CMD}" ;; *) sudo "${CMD}" ;; esac
+  CURRENT="`ls --color=no /var/log/portage -tr | tail -1`"
+  tail -f /var/log/portage/${CURRENT} || sudo tail -f /var/log/portage/${CURRENT}
 }
 
 loop_despook() {
