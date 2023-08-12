@@ -105,4 +105,6 @@ loop_despook() {
   done
 }
 
-"${@}"
+LAUNCHER="$(echo ${0} | tr '/' '\n' | tail -1)"
+
+"${LAUNCHER}"
