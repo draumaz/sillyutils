@@ -94,7 +94,10 @@ tbc() {
 }
 
 glog() {
-  CURRENT="`ls --color=no /var/log/portage -tr | tail -1`"
+  case "${1}" in "")
+    CURRENT="`ls --color=no /var/log/portage -tr | tail -1`" ;;
+    *) CURRENT="*${1}*" ;;
+  esac
   tail -f /var/log/portage/${CURRENT} || sudo tail -f /var/log/portage/${CURRENT}
 }
 
@@ -109,4 +112,4 @@ dbus_plasma_wayland_session() { exec dbus-run-session startplasma-wayland; }
 
 LAUNCHER="$(echo ${0} | tr '/' '\n' | tail -1)"
 
-"${LAUNCHER}"
+"${LAUNCHER}" "${@}"  
