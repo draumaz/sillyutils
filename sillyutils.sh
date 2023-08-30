@@ -1,4 +1,7 @@
 #!/bin/bash -e
+##
+## sillyutils, by draumaz (1.1)
+##
 
 oae() {
   MACPAC_REPO="https://oooa.draumaz.xyz/app" MACPAC_INSTALL_PATH="/Applications" \
