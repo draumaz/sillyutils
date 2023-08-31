@@ -2,8 +2,11 @@
 
 set -x
 
-mkdir -p bin
-cd bin
+mkdir -p ./bin
+cd ./bin
+
+cp ../sillyutils.sh ./sillyutils
+chmod +x ./sillyutils
 
 for LINK in `cat ../sillyutils.sh | \
   tr ' ' '\n' | \
