@@ -2,8 +2,7 @@
 
 set -x
 
-mkdir -p ./bin
-cd ./bin
+mkdir ./bin; cd ./bin
 
 cp ../sillyutils.sh ./sillyutils
 chmod +x ./sillyutils
