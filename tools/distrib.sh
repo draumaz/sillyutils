@@ -1,6 +1,9 @@
 #!/bin/sh
 
-mkdir -pv bin; cd bin
+set -x
+
+mkdir -p bin
+cd bin
 
 for LINK in `cat ../sillyutils.sh | \
   tr ' ' '\n' | \
