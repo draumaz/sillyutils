@@ -13,5 +13,5 @@ for LINK in `cat ../sillyutils.sh | \
   grep '()' | \
   tr '()' '\n' | \
   grep '[Aa-zZ]'`; do
-    ln -sv sillyutils "${LINK}"
+    ln -s sillyutils "${LINK}"
 done
