@@ -114,5 +114,4 @@ loop_despook() {
 dbus_plasma_wayland_session() { exec dbus-run-session startplasma-wayland; }
 
 LAUNCHER="$(echo ${0} | tr '/' '\n' | tail -1)"
-
-"${LAUNCHER}" "${@}"  
+case "${LAUNCHER}" in *sillyutils*) exit 0 ;; *) "${LAUNCHER}" "${@}" ;; esac
