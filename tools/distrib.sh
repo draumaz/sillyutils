@@ -2,15 +2,18 @@
 
 set -x
 
-mkdir ./bin; cd ./bin
+mkdir ./bin ./doc
 
-cp ../sillyutils.sh ./sillyutils
-chmod +x ./sillyutils
+cp ./sillyutils.sh bin/sillyutils
+cp ./sillyutils.1 doc/sillyutils.1
 
-for LINK in `cat ../sillyutils.sh | \
+chmod +x bin/sillyutils
+
+for LINK in `cat ./sillyutils.sh | \
   tr ' ' '\n' | \
   grep '()' | \
   tr '()' '\n' | \
   grep '[Aa-zZ]'`; do
-    ln -s sillyutils "${LINK}"
+    cd ./bin; ln -s sillyutils "${LINK}"; cd ..
+    cd ./doc; ln -s sillyutils.1 "${LINK}.1"; cd ..
 done
