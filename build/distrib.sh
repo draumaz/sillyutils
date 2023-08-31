@@ -9,6 +9,9 @@ cp ./sillyutils.1 doc/sillyutils.1
 
 chmod +x bin/sillyutils
 
+# create a symlink for each function.
+# sillyutils calls by ${0}.
+
 for LINK in `cat ./sillyutils.sh | \
   tr ' ' '\n' | \
   grep '()' | \
