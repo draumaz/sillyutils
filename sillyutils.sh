@@ -72,4 +72,15 @@ loop_despook() {
 dbus_plasma_wayland_session() { exec dbus-run-session startplasma-wayland; }
 
 LAUNCHER="$(echo ${0} | tr '/' '\n' | tail -1)"
-case "${LAUNCHER}" in *sillyutils*) man ./sillyutils.1 || man sillyutils; exit 0 ;; *) "${LAUNCHER}" "${@}" ;; esac
+
+case "${LAUNCHER}" in
+  *sillyutils*)
+    if test -e ./sillyutils.1; then
+      man ./sillyutils.1
+    else
+      man sillyutils
+    fi
+    exit 0
+  ;;
+  *) "${LAUNCHER}" "${@}" ;;
+esac
