@@ -3,6 +3,16 @@
 ## sillyutils, by draumaz (1.1)
 ##
 
+emu() {
+  case `id -u` in
+    0) ;; *)
+      if which doas &> /dev/null; then P="doas"; else P="sudo"; fi
+  esac
+  $P emaint sync -a
+  $P emerge -auDN @world --keep-going
+  $P emerge -c
+}
+
 corntab() {
   sp="/-\|"
   case $1 in -e) google-chrome-stable https://www.youtube.com/watch?v=X0YLt4dcx8w; exit 0 ;; esac
