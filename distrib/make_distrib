@@ -7,8 +7,8 @@ case "${1}" in
   *) DESTDIR="build" ;;
 esac
 
-mkdir -p "${DESTDIR}/{bin,man/man1}"
-cd "${DESTDIR}"
+mkdir -p ${DESTDIR}/{bin,man/man1}
+cd ${DESTDIR}
 
 cp ../sillyutils.sh bin/sillyutils
 cp ../sillyutils.1 man/man1/sillyutils.1
