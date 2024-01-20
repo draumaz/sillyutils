@@ -1,7 +1,4 @@
 #!/bin/bash -e
-##
-## sillyutils, by draumaz (1.1)
-##
 
 emu() {
   case `id -u` in
