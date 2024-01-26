@@ -12,7 +12,7 @@ emu() {
 
 corntab() {
   sp="/-\|"
-  case $1 in -e) google-chrome-stable https://www.youtube.com/watch?v=X0YLt4dcx8w; exit 0 ;; esac
+  case $1 in -e) xdg-open https://www.youtube.com/watch?v=X0YLt4dcx8w; exit 0 ;; esac
   clear; cat << EOF
 =================
 corntab
