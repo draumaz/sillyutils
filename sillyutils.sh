@@ -1,13 +1,10 @@
 #!/bin/bash -e
 
 emu() {
-  case `id -u` in
-    0) ;; *)
-      if which doas &> /dev/null; then P="doas"; else P="sudo"; fi
+  case `id -u` in 0) ;; *)
+    if which doas &> /dev/null; then P="doas"; else P="sudo"; fi ;;
   esac
-  $P emaint sync -a
-  $P emerge -auDN @world --keep-going
-  $P emerge -c
+  "${P}" su -c "emaint sync -a && emerge -uDN @world --keep-going && emerge -c"
 }
 
 corntab() {
