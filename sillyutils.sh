@@ -74,6 +74,7 @@ loop_despook() {
 }
 
 dbus_plasma_wayland_session() { exec dbus-run-session startplasma-wayland; }
+rain_noise() { mpv https://www.youtube.com/watch?v=b8w6ma9gfys --no-video --really-quiet; }
 
 LAUNCHER="$(echo ${0} | tr '/' '\n' | tail -1)"
 
