@@ -61,7 +61,7 @@ tbc() {
 glog() {
   while true; do
     case "${1}" in "")
-      CURRENT="$(find /var/log/portage -printf '%TY-%Tm-%TdT%TT %p\n') | sort | tail -1 | awk '{print $2}')"
+      CURRENT="$(find /var/log/portage -printf '%TY-%Tm-%TdT%TT %p\n' | sort | tail -1 | awk '{print $2}')"
       *) CURRENT="*${1}*" ;;
     esac
     tail -f /var/log/portage/${CURRENT} || sudo tail -f /var/log/portage/${CURRENT} | while IFS= read -r LINE; do
