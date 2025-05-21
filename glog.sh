@@ -9,9 +9,9 @@ while true; do
   tail -f ${CURRENT} || sudo tail -f ${CURRENT} | while IFS= read -r LINE; do
       echo "${LINE}"
       case "${LINE}" in *"Final size of installed tree"*)
-        sleep 5
         break
       ;;
       esac
+      sleep 5
   done
 done
