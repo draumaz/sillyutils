@@ -6,12 +6,13 @@ while true; do
       *) CURRENT="*${1}*" ;;
   esac
 
-  tail -f ${CURRENT} || sudo tail -f ${CURRENT} | while IFS= read -r LINE; do
+  tail -f ${CURRENT} || sudo tail -f ${CURRENT} | \
+    while IFS= read -r LINE; do
       echo "${LINE}"
       case "${LINE}" in *"Final size of installed tree"*)
         break
       ;;
       esac
       sleep 5
-  done
+    done
 done
