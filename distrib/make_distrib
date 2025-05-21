@@ -1,28 +1,14 @@
 #!/bin/sh
 
-set -x
-
 case "${1}" in
   DESTDIR=*) DESTDIR="`echo ${1} | sed 's/DESTDIR=//g'`" ;;
   *) DESTDIR="build" ;;
 esac
 
-mkdir -p ${DESTDIR}/{bin,man/man1}
-cd ${DESTDIR}
+mkdir -pv ${DESTDIR}/bin
 
-cp ../sillyutils.sh bin/sillyutils
-cp ../sillyutils.1 man/man1/sillyutils.1
-
-chmod +x bin/sillyutils
-
-# create a symlink for each function.
-# sillyutils calls by ${0}.
-
-for LINK in `cat bin/sillyutils | \
-  tr ' ' '\n' | \
-  grep '()' | \
-  tr '()' '\n' | \
-  grep '[Aa-zZ]'`; do
-    cd ./bin; ln -s sillyutils "${LINK}"; cd ..
-    cd ./man/man1; ln -s sillyutils.1 "${LINK}.1"; cd ../..
+for SCR in *.sh; do
+  SCRB="$(echo ${SCR} | sed 's/.sh//g')"
+  cp $SCR "${DESTDIR}/bin/${SCRB}"
+  chmod -v +x "${DESTDIR}/bin/${SCRB}"
 done
